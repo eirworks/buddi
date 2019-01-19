@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @stack('additional-head')
 </head>
 <body>
     <div id="app">
@@ -55,6 +57,7 @@
                                 {{--</li>--}}
                             {{--@endif--}}
                         @else
+                            <li class="nav-item"><a href="{{ route('admin::home') }}" class="nav-link">Admin</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -86,5 +89,7 @@
     <footer class="text-center mb-3">
         {{ __('Powered by :app', ['app' => config('app.name') ]) }}
     </footer>
+
+    @stack('additional-foot')
 </body>
 </html>
