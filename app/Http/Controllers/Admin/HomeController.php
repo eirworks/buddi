@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +12,28 @@ class HomeController extends Controller
     {
         return view('admin.home', [
             'menus' => $this->adminMenus(),
+            'stats' => $this->stats(),
         ]);
+    }
+
+    private function stats()
+    {
+        return [
+            'data' => [
+                'articles_count' => [
+                    'name' => __('Articles'),
+                    'count' => Article::count(),
+                ],
+                'categories_count' => [
+                    'name' => __('Categories'),
+                    'count' => 0,
+                ],
+                'unread_tickets_count' => [
+                    'name' => __('Tickets'),
+                    'count' => 0,
+                ],
+            ]
+        ];
     }
 
     private function adminMenus()

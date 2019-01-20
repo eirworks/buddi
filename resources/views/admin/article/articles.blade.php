@@ -9,6 +9,13 @@
         <div class="row justify-content-center">
             <div class="col-8">
 
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('admin::home') }}">Admin Home</a>
+                    </li>
+                    <li class="breadcrumb-item">@yield('title')</li>
+                </ol>
+
                 <h2 class="text-center">
                     @yield('title')
                 </h2>

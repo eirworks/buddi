@@ -16,7 +16,28 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="col"></div>
+            <div class="col">
+
+                @foreach(collect($stats['data'])->chunk(3) as $chunkOfStats)
+                    <div class="row">
+
+                        @foreach($chunkOfStats as $stat)
+                            <div class="col">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center font-weight-bold">{{ $stat['count'] }}</div>
+                                        <div class="text-center">{{ $stat['name'] }}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        @endforeach
+
+                    </div>
+                @endforeach
+
+            </div>
         </div>
     </div>
 @endsection
