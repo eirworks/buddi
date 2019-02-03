@@ -14,7 +14,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $articles = Article::orderBy('id', 'desc')
-            ->select('id', 'title', 'slug', 'user_id', 'created_at', 'reads')
+            ->with(['category'])
             ->paginate();
 
         return view('admin.article.articles', [

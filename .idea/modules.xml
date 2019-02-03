@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/budi.iml" filepath="$PROJECT_DIR$/.idea/budi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Examples/vue-realworld-example-app/.idea/vue-realworld-example-app.iml" filepath="$PROJECT_DIR$/../Examples/vue-realworld-example-app/.idea/vue-realworld-example-app.iml" />
     </modules>
   </component>
 </project>

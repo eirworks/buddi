@@ -15,7 +15,9 @@
                             {{ __('Last updated:') }}
                             {{ $article->updated_at }}
                         </div>
-                        {!! $article->content !!}
+                        <div class="kb-content">
+                            {!! $article->content !!}
+                        </div>
                     </div>
                 </div>
             </div>

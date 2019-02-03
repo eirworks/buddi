@@ -15,10 +15,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'articles', 'as' => 'articles::'], function () {
-
-    Route::get('/{id}/{slug}', "ArticleController@viewArticle")->name('view');
-
+Route::group(['as' => "articles::", 'prefix' => 'articles'], function () {
+    Route::get('/', "ArticleController@index")->name('all');
+    Route::get('/{id}/{slug?}', "ArticleController@show")->name('show');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin'], function () {
@@ -33,6 +32,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin'], f
         Route::get('/edit/{id}', "ArticleController@editArticle")->name('edit');
         Route::post('/edit/{id}', "ArticleController@updateArticle")->name('update');
         Route::delete('/delete/{id}', "ArticleController@deleteArticle")->name('delete');
+
+    });
+
+    Route::group(['prefix' => 'categories', 'as' => 'categories::'], function () {
+
+        Route::get('/', "CategoryController@index")->name('all');
+        Route::get('/new', "CategoryController@create")->name('new');
+        Route::post('/new', "CategoryController@store")->name('create');
+        Route::get('/edit/{id}', "CategoryController@edit")->name('edit');
+        Route::post('/edit/{id}', "CategoryController@update")->name('update');
+        Route::delete('/delete/{id}', "CategoryController@destroy")->name('destroy');
 
     });
 

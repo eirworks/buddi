@@ -24,11 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles = Article::where('published', true)
-            ->orderBy('reads', 'desc')
-            ->orderBy('title', 'asc')
-            ->limit(7)
-            ->get();
+        $articles = Article::paginate();
 
         return view('home', [
             'articles' => $articles,

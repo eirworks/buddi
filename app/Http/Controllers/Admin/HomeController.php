@@ -12,11 +12,21 @@ class HomeController extends Controller
     {
         return view('admin.home', [
             'menus' => $this->adminMenus(),
-            'stats' => $this->stats(),
+            'stats' => $this->adminStats(),
         ]);
     }
 
-    private function stats()
+    public function menus(Request $request)
+    {
+        return response()->json($this->adminMenus());
+    }
+
+    public function stats(Request $request)
+    {
+        return response()->json($this->adminStats());
+    }
+
+    private function adminStats()
     {
         return [
             'data' => [

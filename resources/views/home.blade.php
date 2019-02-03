@@ -18,7 +18,7 @@
             @foreach($articles as $article)
                 <div class="card my-1">
                     <div class="card-body">
-                        <div><a href="{{ route('articles::view', [$article, $article->slug]) }}">{{ $article->title }}</a></div>
+                        <div><a href="{{ route('articles::show', [$article, $article->slug]) }}">{{ $article->title }}</a></div>
                     </div>
                 </div>
             @endforeach
