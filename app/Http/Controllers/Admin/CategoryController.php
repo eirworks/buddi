@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Events\CategoryDeleted;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -74,7 +75,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.category_form', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -86,7 +89,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->slug = str_slug($category->name);
+        $category->save();
+
+        return redirect()->route('admin::categories::all');
     }
 
     /**
@@ -97,6 +104,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        event(new CategoryDeleted($category));
+
+        return redirect()->route('admin::categories::all');
     }
 }

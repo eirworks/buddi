@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\CategoryDeleted;
+use App\Listeners\RemoveDeletedCategory;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -17,6 +19,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+
+        CategoryDeleted::class => [
+            RemoveDeletedCategory::class
         ],
     ];
 

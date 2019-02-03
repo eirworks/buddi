@@ -20,11 +20,11 @@
                     <li class="breadcrumb-item">@yield('title')</li>
                 </ol>
 
-                <form action="{{ $category->id ? route('admin::categories::create', [$category]) : route('admin::categories::create') }}" method="post">
+                <form action="{{ $category->id ? route('admin::categories::update', [$category]) : route('admin::categories::create') }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="{{ __('Category name') }}">
+                        <input type="text" class="form-control" name="name" value="{{ $category->name }}" placeholder="{{ __('Category name') }}">
                     </div>
 
                     <div class="form-group">

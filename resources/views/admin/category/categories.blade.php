@@ -34,8 +34,11 @@
                             <td>{{ $category->slug }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="" class="btn btn-link">Edit</a>
-                                    <a href="" class="btn btn-link text-danger">Delete</a>
+                                    <a href="{{ route('admin::categories::edit', [$category]) }}" class="btn btn-link">{{ __('Edit') }}</a>
+                                    <button class="btn btn-link text-danger" onclick="$('#delete-category-{{ $category->id }}').submit()">{{ __('Delete') }}</button>
+                                    <form id="delete-category-{{ $category->id }}" class="hide" action="{{ route('admin::categories::destroy', [$category]) }}" onsubmit="return confirm('{{ __('Delete this item?') }}')" method="post">
+                                        @csrf @method('delete')
+                                    </form>
                                 </div>
                             </td>
                         </tr>
