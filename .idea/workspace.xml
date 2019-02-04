@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8c36d45-bff2-4d4f-95a0-dff85585411e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/article/articles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/article/articles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/categories.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/category_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/category_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <ignored path=".idea/dataSources/943b7226-091a-404a-b9f1-fc78280e9e06.xml" />
     <ignored path=".idea/dataSources.xml" />
@@ -70,10 +63,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="744">
-              <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="45">
+                <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -108,7 +104,6 @@
         <option value="$PROJECT_DIR$/.env.example" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/UserSeeder.php" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/app/Events/ArticleCreated.php" />
         <option value="$PROJECT_DIR$/app/Events/ArticleUpdated.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Api/MarkdownParserController.php" />
@@ -153,6 +148,7 @@
         <option value="$PROJECT_DIR$/resources/views/admin/category/categories.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -408,7 +404,7 @@
       <workItem from="1547984951085" duration="3341000" />
       <workItem from="1549028571447" duration="2504000" />
       <workItem from="1549112206532" duration="2126000" />
-      <workItem from="1549203339643" duration="4790000" />
+      <workItem from="1549203339643" duration="5455000" />
     </task>
     <task id="LOCAL-00001" summary="first commit;&#10;display articles">
       <created>1547817662072</created>
@@ -445,18 +441,25 @@
       <option name="project" value="LOCAL" />
       <updated>1549206788964</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add edit, delete category">
+      <created>1549208437087</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1549208437087</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36441000" />
+    <option name="totallyTimeSpent" value="37106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1928" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49944875" visible="true" weight="0.21100427" />
-      <window_info id="Structure" order="1" sideWeight="0.5005513" side_tool="true" visible="true" weight="0.21100427" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.21100427" />
+      <window_info id="Structure" order="1" sideWeight="0.5008183" side_tool="true" visible="true" weight="0.21100427" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" weight="0.3296582" />
@@ -468,10 +471,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.3297587" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3263506" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3263506" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.25799337" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.25689086" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -489,16 +492,10 @@
     <MESSAGE value="add markdown parser;&#10;add article crud;" />
     <MESSAGE value="update admin home" />
     <MESSAGE value="article and category" />
-    <option name="LAST_COMMIT_MESSAGE" value="article and category" />
+    <MESSAGE value="add edit, delete category" />
+    <option name="LAST_COMMIT_MESSAGE" value="add edit, delete category" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/admin/Home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -859,8 +856,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+        <state relative-caret-position="388">
+          <caret line="106" column="28" lean-forward="true" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="45">
+            <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
