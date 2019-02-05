@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('admin::home') }}">Admin Home</a>
+                        <a href="{{ route('admin::home') }}">{{ __('Admin Home') }}</a>
                     </li>
                     <li class="breadcrumb-item">@yield('title')</li>
                 </ol>
@@ -24,6 +24,7 @@
                     <tr>
                         <th>{{ __('Category Name') }}</th>
                         <th>{{ __('Slug') }}</th>
+                        <th>{{ __('Articles') }}</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -32,6 +33,7 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->slug }}</td>
+                            <td>{{ $category->articles_count }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin::categories::edit', [$category]) }}" class="btn btn-link">{{ __('Edit') }}</a>
