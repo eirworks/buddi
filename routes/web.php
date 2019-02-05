@@ -20,7 +20,7 @@ Route::group(['as' => "articles::", 'prefix' => 'articles'], function () {
     Route::get('/{id}/{slug?}', "ArticleController@show")->name('show');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', "HomeController@index")->name('home');
 
