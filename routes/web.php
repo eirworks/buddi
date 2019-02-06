@@ -46,6 +46,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin', 'm
 
     });
 
+    Route::group(['prefix' => 'users', 'as' => 'users::'], function () {
+
+        Route::get('/', "UserController@index")->name('all');
+        Route::get('/new', "UserController@create")->name('new');
+        Route::post('/new', "UserController@store")->name('create');
+        Route::get('/edit/{user}', "UserController@edit")->name('edit');
+        Route::post('/edit/{user}', "UserController@update")->name('update');
+        Route::delete('/delete/{user}', "UserController@destroy")->name('destroy');
+
+    });
+
     Route::group(['prefix' => 'api', 'as' => 'api::', 'namespace' => 'Api'], function () {
 
         Route::post('/markdown/parse', "MarkdownParserController@parse")->name('markdown::parse');

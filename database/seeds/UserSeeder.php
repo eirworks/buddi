@@ -17,6 +17,8 @@ class UserSeeder extends Seeder
             'name' => "Developer",
             'email' => 'dev@cc.cc',
             'password' => Hash::make('dev'),
+            'admin' => true,
+            'activated' => true,
         ]);
 
         factory(\App\User::class, 10)->create();
