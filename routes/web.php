@@ -57,6 +57,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin', 'm
 
     });
 
+    Route::group(['prefix' => 'settings', 'as' => 'settings::'], function () {
+
+        Route::get('/', "SettingController@index")->name('all');
+        Route::post('/', "SettingController@store")->name('save');
+
+    });
+
     Route::group(['prefix' => 'api', 'as' => 'api::', 'namespace' => 'Api'], function () {
 
         Route::post('/markdown/parse', "MarkdownParserController@parse")->name('markdown::parse');

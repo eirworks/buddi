@@ -33,14 +33,17 @@ class HomeController extends Controller
                 'articles_count' => [
                     'name' => __('Articles'),
                     'count' => Article::count(),
+                    'visible' => true,
                 ],
                 'categories_count' => [
                     'name' => __('Categories'),
                     'count' => 0,
+                    'visible' => true,
                 ],
                 'unread_tickets_count' => [
                     'name' => __('Tickets'),
                     'count' => 0,
+                    'visible' => setting('enable_tickets', 0) == '1',
                 ],
             ]
         ];

@@ -13,16 +13,18 @@
                     <div class="row">
 
                         @foreach($chunkOfStats as $stat)
-                            <div class="col">
+                            @if($stat['visible'])
+                                <div class="col">
 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center font-weight-bold">{{ $stat['count'] }}</div>
-                                        <div class="text-center">{{ $stat['name'] }}</div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="text-center font-weight-bold">{{ $stat['count'] }}</div>
+                                            <div class="text-center">{{ $stat['name'] }}</div>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </div>
+                                </div>
+                            @endif
                         @endforeach
 
                     </div>
