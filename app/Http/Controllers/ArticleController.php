@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use App\Http\Resources\ArticleResource;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,18 @@ class ArticleController extends Controller
 
         return view('view_article', [
             'article' => $article,
+        ]);
+    }
+
+    public function articleByCategory(Request $request, $id, $slug)
+    {
+        $category = Category::findOrFail($id);
+
+        $articles = $category->articles()->paginate();
+
+        return view('articles', [
+            'articles' => $articles,
+            'category' => $category,
         ]);
     }
 }

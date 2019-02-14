@@ -18,6 +18,18 @@
                         <div class="form-group">
                             <input type="text" name="settings[site_name]" value="{{ setting('site_name') }}" class="form-control" placeholder="{{ __('Site name') }}">
                         </div>
+
+                        <div class="form-group">
+                            <input type="text" name="settings[search_placeholder]" value="{{ setting('search_placeholder') }}" class="form-control" placeholder="{{ __('Search placeholder') }}">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>{{ __('SEO') }}</legend>
+
+                        <div class="form-group">
+                            <input type="text" name="settings[frontpage_title]" value="{{ setting('frontpage_title') }}" class="form-control" placeholder="{{ __('Frontpage\'s title') }}">
+                        </div>
                     </fieldset>
 
                     <fieldset>

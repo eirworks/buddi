@@ -12,7 +12,12 @@ class Article extends Model
     ];
 
     protected $fillable = [
-        'title', 'slug', 'content', 'content_md', 'data', 'published', 'user_id'
+        'title', 'slug', 'content', 'content_md', 'data', 'published', 'user_id', 'category_id'
+    ];
+
+    protected $attributes = [
+        'reads' => 0,
+        'category_id' => 0,
     ];
 
     public function user()

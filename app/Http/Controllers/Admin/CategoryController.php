@@ -6,6 +6,7 @@ use App\Category;
 use App\Events\CategoryDeleted;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -47,7 +48,7 @@ class CategoryController extends Controller
     {
         $category = Category::create([
             'name' => $request->input('name'),
-            'slug' => str_slug($request->input('name')),
+            'slug' => Str::slug($request->input('name')),
             'image' => '',
             'data' => [],
             'description' => '',
@@ -90,7 +91,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->name = $request->name;
-        $category->slug = str_slug($category->name);
+        $category->slug = Str::slug($category->name);
         $category->save();
 
         return redirect()->route('admin::categories::all');

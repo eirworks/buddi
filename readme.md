@@ -1,6 +1,6 @@
-# BUDI
+# BUDDI
 
-Budi is a laravel based simple knowledge base
+Buddi is a laravel based simple knowledge base
 with support ticket and status page.
 
 ## Features

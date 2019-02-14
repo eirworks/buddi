@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Category;
 use App\Events\ArticleCreated;
 use App\Events\ArticleUpdated;
 use cebe\markdown\Markdown;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -25,22 +27,27 @@ class ArticleController extends Controller
     public function newArticle(Request $request)
     {
         $article = new Article();
+        $categories = Category::get();
 
         return view('admin.article.article_form', [
             'article' => $article,
+            'categories' => $categories,
         ]);
     }
 
     public function createArticle(Request $request)
     {
+        $parser = new Markdown();
+
         $article = Article::create([
             'user_id' => auth()->id(),
             'title' => $request->input('title'),
-            'slug' => str_slug($request->input('title')),
-            'content' => $request->input('content_html'),
+            'slug' => Str::slug(($request->input('title'))),
             'content_md' => $request->input('content_md'),
+            'content' => $parser->parse($request->input('content_md')),
             'data' => [],
             'published' => $request->input('published', false),
+            'category_id' => $request->input('category_id', 0),
         ]);
 
         event(new ArticleCreated($article));
@@ -51,9 +58,11 @@ class ArticleController extends Controller
     public function editArticle(Request $request, $id)
     {
         $article = Article::findOrFail($id);
+        $categories = $categories = Category::get();
 
         return view('admin.article.article_form', [
             'article' => $article,
+            'categories' => $categories,
         ]);
     }
 
@@ -64,11 +73,12 @@ class ArticleController extends Controller
         $parser = new Markdown();
 
         $article->title = $request->input('title');
-        $article->slug = str_slug($request->input('title'));
+        $article->slug = Str::slug(($request->input('title')));
         $article->content = $request->input('content');
         $article->content_md = $request->input('content_md');
         $article->content = $parser->parse($article->content_md);
         $article->published = $request->input('published', false);
+        $article->category_id = $request->input('category_id', 0);
         $article->save();
 
         event(new ArticleUpdated($article));

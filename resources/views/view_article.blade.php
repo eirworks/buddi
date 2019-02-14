@@ -12,8 +12,15 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="text-muted mb-3">
-                            {{ __('Last updated:') }}
-                            {{ $article->updated_at }}
+                            <div class="row">
+                                <div class="col">
+                                    {{ __('Last updated:') }}
+                                    {{ \Carbon\Carbon::parse($article->updated_at)->diffForHumans() }}
+                                </div>
+                                <div class="col text-right">
+                                    {{ __(':minutes minutes reading time', ['minutes' =>  \App\Helpers\StringHelper::reading_time(strip_tags($article->content)) ]) }}
+                                </div>
+                            </div>
                         </div>
                         <div class="kb-content">
                             {!! $article->content !!}

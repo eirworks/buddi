@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,9 +26,11 @@ class HomeController extends Controller
     public function index()
     {
         $articles = Article::paginate();
+        $categories = Category::get();
 
         return view('home', [
             'articles' => $articles,
+            'categories' => $categories,
         ]);
     }
 }

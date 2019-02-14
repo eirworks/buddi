@@ -16,9 +16,9 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col">
+            <div class="col-8">
                 <form action="{{ $article->id ? route('admin::articles::update', [$article]) : route('admin::articles::create') }}" method="post">
                     @csrf
 
@@ -36,39 +36,23 @@
                                 placeholder="{{ __('Article content') }}"
                         onchange="markdown()">{{ $article->content_md }}</textarea>
                     </div>
+
+                    <div class="form-group">
+                        <select name="category_id" id="category_id" class="form-control">
+                            <option value="" {{ 0 == $article->category_id ? 'selected' : '' }}>{{ __('No category') }}</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $article->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
-                            <button type="button" class="btn btn-link text-body" onclick="markdown()">{{ __('Preview') }}</button>
+                            <button type="submit" name="action" value="submit" class="btn btn-primary">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col">
-                <div id="markdown-preview"></div>
-            </div>
         </div>
     </div>
 @endsection
-
-@push('additional-foot')
-    <script>
-        function markdown() {
-            $.ajax({
-                method: 'POST',
-                url: '{{ route('admin::api::markdown::parse') }}',
-                data: {
-                    content_md: $("#content_md").val(),
-                    _token: "{{ csrf_token() }}",
-                },
-            }).done(function (data) {
-                $("#markdown-preview").html(data.content);
-            })
-                .fail(function () {
-                    console.log("Error!");
-                    $("#markdown-preview").text("{{ __('ERROR parsing data!') }}")
-                })
-        }
-    </script>
-@endpush
-
