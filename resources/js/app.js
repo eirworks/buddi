@@ -9,14 +9,14 @@ require('./bootstrap');
 
 // window.Vue = require('vue');
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import routes from './routes'
+// import VueRouter from 'vue-router'
+// import routes from './routes'
 
-Vue.use(VueRouter)
-
-const router = new VueRouter({
-    routes
-})
+// Vue.use(VueRouter)
+//
+// const router = new VueRouter({
+//     routes
+// })
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,6 +36,6 @@ const router = new VueRouter({
  */
 
 const app = new Vue({
-    router,
+    // router,
     el: '#app'
 });
