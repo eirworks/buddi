@@ -95,7 +95,7 @@ class UserController extends Controller
         }
         if ($request->filled('password'))
         {
-            $user->password = $request->input('password');
+            $user->password = \Hash::make($request->input('password'));
         }
 
         $user->save();
