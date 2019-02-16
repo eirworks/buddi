@@ -89,14 +89,18 @@ class UserController extends Controller
     {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+
         if (auth()->user()->admin)
         {
             $user->admin = $request->input('admin', false);
         }
+
         if ($request->filled('password'))
         {
             $user->password = \Hash::make($request->input('password'));
         }
+
+        $user->activated = $request->input('activated', false);
 
         $user->save();
 

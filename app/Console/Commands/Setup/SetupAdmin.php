@@ -52,6 +52,7 @@ class SetupAdmin extends Command
             'name' => $adminName,
             'email' => $adminEmail,
             'password' => \Hash::make($adminPassword),
+            'activated' => true,
         ]);
 
         $this->info(__("Admin account created successfully"));
