@@ -90,5 +90,6 @@
     @yield('content')
 
     <script src="{{ asset('js/app.js') }}"></script>
+    @stack('footer')
 </body>
 </html>

@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration
             $table->text('content_md');
             $table->json('data');
             $table->boolean('published')->default(false);
+            $table->boolean('featured')->default(false);
             $table->softDeletes();
             $table->timestamps();
 

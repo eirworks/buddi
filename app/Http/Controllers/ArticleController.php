@@ -40,7 +40,9 @@ class ArticleController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $articles = $category->articles()->paginate();
+        $articles = $category->articles()
+            ->where('published', true)
+            ->paginate();
 
         return view('articles', [
             'articles' => $articles,

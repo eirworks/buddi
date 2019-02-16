@@ -51,7 +51,7 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->input('name')),
             'image' => '',
             'data' => [],
-            'description' => '',
+            'description' => $request->input('description'),
         ]);
 
         return redirect()->route('admin::categories::all');
@@ -92,6 +92,7 @@ class CategoryController extends Controller
     {
         $category->name = $request->name;
         $category->slug = Str::slug($category->name);
+        $category->description = $request->input('description');
         $category->save();
 
         return redirect()->route('admin::categories::all');
