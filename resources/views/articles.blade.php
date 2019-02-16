@@ -16,6 +16,9 @@
                         <div class="row">
                             <div class="col-4">
                                 <h3 class="text-center">@yield('title')</h3>
+                                @if(request()->filled('q'))
+                                    <div class="text-center">{{ __('Found :count search results for ":q"', ['q' => request()->input('q'),'count' => $articles->count()]) }}</div>
+                                @endif
                                 <hr>
                                 <div>
                                     <a href="{{ route('home') }}">&larr; {{ __('Return to home') }}</a>

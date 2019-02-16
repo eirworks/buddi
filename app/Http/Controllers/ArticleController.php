@@ -11,13 +11,20 @@ class ArticleController extends Controller
 {
     public function articles(Request $request)
     {
-        $articles = Article::where('published', true)
-            ->orderBy('reads', 'desc')
-            ->orderBy('title', 'asc')
-            ->limit(7)
-            ->get();
+        \Log::debug("Q=".\request()->input('q'));
 
-        return response()->json(ArticleResource::collection($articles));
+        $articles = Article::where('published', true)
+            ->when($request->filled('q'), function ($query) {
+                $query->where('title', 'like', '%'.\request()->input('q').'%');
+            })
+            ->orderBy('reads', 'desc')
+            ->orderBy('title', 'asc');
+
+        \Log::debug("SQL=".$articles->toSql());
+
+        return view('articles', [
+            'articles' => $articles->paginate(),
+        ]);
     }
 
     public function show(Request $request, $id, $slug)

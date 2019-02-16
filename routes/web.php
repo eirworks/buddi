@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['as' => "articles::", 'prefix' => 'articles'], function () {
-    Route::get('/', "ArticleController@index")->name('all');
+    Route::get('/', "ArticleController@articles")->name('all');
     Route::get('/{id}/{slug?}', "ArticleController@show")->name('show');
     Route::get('/categories/{id}/{slug?}', "ArticleController@articleByCategory")->name('article-by-category');
 });

@@ -6,12 +6,14 @@
         <div class="col-md-8">
             <div class="card mb-2">
                 <div class="card-body">
-                    <div class="form-group my-0">
-                        <input type="search" name="search" value="{{ request()->input('search') }}" placeholder="{{ setting('search_placeholder', __("What do you need help with?")) }}" class="form-control">
-                    </div>
-                    {{--<div class="text-center">--}}
-                        {{--<button class="btn btn-primary">{{ __("Search") }}</button>--}}
-                    {{--</div>--}}
+                    <form action="{{ route('articles::all') }}" method="get">
+                        <div class="form-group my-2">
+                            <input type="search" name="q" value="{{ request()->input('search') }}" placeholder="{{ setting('search_placeholder', __("What do you need help with?")) }}" class="form-control">
+                        </div>
+                        {{--<div class="text-center">--}}
+                            {{--<button class="btn btn-primary">{{ __("Search") }}</button>--}}
+                        {{--</div>--}}
+                    </form>
                 </div>
             </div>
         </div>
