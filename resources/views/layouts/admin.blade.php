@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
         <div class="container">
             <a class="navbar-brand" href="{{ route('admin::home') }}">{{ config('app.name') }}</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
@@ -17,12 +17,15 @@
                     aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse " id="collapsibleNavId">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('admin::home') }}" class="nav-link">{{ __('Hi, :name', ['name' => auth()->user()->name]) }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:;" class="nav-link" onclick="$('#logout-form').submit();">{{ __('Logout') }}</a>
-                        <form action="{{ route('logout') }}" class="hide" method="post" id="logout-form">@csrf</form>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ __('Hi, :name', ['name' => auth()->user()->name]) }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('admin::edit-profile') }}" class="nav-link text-dark">{{ __('Edit Profile') }}</a>
+                            <a href="javascript:;" class="nav-link text-dark" onclick="$('#logout-form').submit();">{{ __('Logout') }}</a>
+                            <form action="{{ route('logout') }}" class="hide" method="post" id="logout-form">@csrf</form>
+                        </div>
                     </li>
                 </ul>
             </div>

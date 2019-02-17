@@ -71,4 +71,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin::', 'namespace' => 'Admin', 'm
 
     });
 
+    Route::get('edit-profile', "ProfileController@edit")->name('edit-profile');
+    Route::post('edit-profile', "ProfileController@update")->name('edit-profile::update');
+
 });
