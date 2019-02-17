@@ -62,6 +62,9 @@
                     <div class="btn-group my-3">
                         <button type="submit" name="action" value="publish" class="btn btn-primary">{{ __($article->id ? 'Update' : 'Publish') }}</button>
                         <button type="submit" name="action" value="draft" class="btn btn-light">{{ __('Save as draft') }}</button>
+                        @if($article->published)
+                            <a href="{{ route('articles::show', [$article, $article->slug]) }}" class="btn btn-light" target="_blank">{{ __('View') }}</a>
+                        @endif
                     </div>
                     <hr>
 

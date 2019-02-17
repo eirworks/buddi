@@ -32,3 +32,8 @@
     </div>
 @endsection
 
+@push('additional-head')
+    <meta name="title" content="{{ collect($article->data)->get('seo_title', $article->title) }}">
+    <meta name="keywords" content="{{ collect($article->data)->get('seo_keywords') }}">
+    <meta name="description" content="{{ collect($article->data)->get('seo_description') }}">
+@endpush
