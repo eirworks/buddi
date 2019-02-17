@@ -42,10 +42,10 @@ class ArticleController extends Controller
         $article = Article::create([
             'user_id' => auth()->id(),
             'title' => $request->input('title'),
-            'slug' => Str::slug(($request->input('title'))),
+            'slug' => $request->input('slug'),
             'content_md' => $request->input('content_md'),
             'content' => $parser->parse($request->input('content_md')),
-            'data' => [],
+            'data' => $request->input('data', []),
             'published' => $request->input('action', 'publish') == 'publish',
             'featured' => $request->input('featured', false),
             'category_id' => $request->input('category_id', 0),
@@ -74,13 +74,14 @@ class ArticleController extends Controller
         $parser = new Markdown();
 
         $article->title = $request->input('title');
-        $article->slug = Str::slug(($request->input('title')));
+        $article->slug = $request->input('slug');
         $article->content = $request->input('content');
         $article->content_md = $request->input('content_md');
         $article->content = $parser->parse($article->content_md);
         $article->published = $request->input('action', 'publish') == 'publish';
         $article->featured = $request->input('featured', false);
         $article->category_id = $request->input('category_id', 0);
+        $article->data = $request->input('data', []);
         $article->save();
 
         event(new ArticleUpdated($article));

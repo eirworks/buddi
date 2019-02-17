@@ -17,38 +17,53 @@
             </div>
         </div>
 
-        <form action="{{ $article->id ? route('admin::articles::update', [$article]) : route('admin::articles::create') }}" method="post">
+        <form action="{{ $article->id ? route('admin::articles::update', [$article]) : route('admin::articles::create') }}" method="post" id="form-app">
             @csrf
             <div class="row mb-5">
 
                 <div class="col-8">
                     <ul class="nav nav-tabs mb-3">
-                        <li class="nav-item"><a class="nav-link active" href="javascript:;">{{ __('Editor') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="javascript:;">{{ __('Preview') }}</a></li>
+                        <li class="nav-item"><a :class="{ 'nav-link': true, 'active': !openPreview, }" href="javascript:;" @click="openPreview=false">{{ __('Editor') }}</a></li>
+                        <li class="nav-item"><a :class="{'nav-link': true, 'active': openPreview }" href="javascript:;" @click="preview()">{{ __('Preview') }}</a></li>
                     </ul>
 
+                    <div v-if="!openPreview">
 
                         <div class="form-group">
-                            <input type="text" name="title" value="{{ $article->title }}" placeholder="{{ __('Your article\'s title') }}" class="form-control">
+                            <input v-model="title" type="text" name="title" value="{{ $article->title }}" placeholder="{{ __('Your article\'s title') }}" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <textarea
-                                    name="content_md"
-                                    id="content_md"
-                                    cols="30"
-                                    rows="10"
-                                    class="form-control"
-                                    placeholder="{{ __('Article content') }}">{{ $article->content_md }}</textarea>
+                        <textarea
+                                v-model="content"
+                                name="content_md"
+                                id="content_md"
+                                cols="30"
+                                rows="10"
+                                class="form-control"
+                                placeholder="{{ __('Article content') }}">{{ $article->content_md }}</textarea>
                         </div>
 
                         <div class="row">
                             <div class="col">
                             </div>
                         </div>
+                    </div>
+
+                    <div v-else>
+                        <div v-html="compiledContent"></div>
+                    </div>
+
+
 
                 </div>
                 <div class="col">
+
+                    <div class="btn-group my-3">
+                        <button type="submit" name="action" value="publish" class="btn btn-primary">{{ __($article->id ? 'Update' : 'Publish') }}</button>
+                        <button type="submit" name="action" value="draft" class="btn btn-light">{{ __('Save as draft') }}</button>
+                    </div>
+                    <hr>
 
                     <div class="form-group">
                         <label for="category_id">{{ __('Select category') }}</label>
@@ -67,10 +82,26 @@
                         </div>
                     </div>
 
-                    <div class="btn-group my-3">
-                        <button type="submit" name="action" value="publish" class="btn btn-primary">{{ __($article->id ? 'Update' : 'Publish') }}</button>
-                        <button type="submit" name="action" value="draft" class="btn btn-light">{{ __('Save as draft') }}</button>
+                    <hr>
+                    <h5>SEO</h5>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="slug" value="" v-model="slug" placeholder="{{ __('Slug URL') }}">
                     </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="data[seo_title]" value="" v-model="seo_title" placeholder="{{ __('SEO Title') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="data[seo_keywords]" value="" v-model="seo_keywords" placeholder="{{ __('SEO Keyword') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="data[seo_description]" value="" v-model="seo_description" placeholder="{{ __('SEO Description') }}">
+                    </div>
+
+
                 </div>
             </div>
 
@@ -80,4 +111,41 @@
 
 @push('footer')
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.6.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slug@0.9.3/slug.min.js"></script>
+
+    <script>
+
+        var app = new Vue({
+            el: "#form-app",
+            data() {
+                return {
+                    content: "{{ $article->content_md }}",
+                    compiledContent: "",
+                    slug: "{{ $article->slug }}",
+                    title: "{{ $article->title }}",
+                    openPreview: false,
+                    seo_title: "{{ collect($article->data)->get('seo_title') }}",
+                    seo_keywords: "{{ collect($article->data)->get('seo_keywords') }}",
+                    seo_description: "{{ collect($article->data)->get('seo_description') }}",
+                }
+            },
+
+            methods: {
+                preview() {
+                    this.openPreview = true;
+                    this.compiledContent = marked(this.content);
+                }
+            },
+
+            watch: {
+                title: function(newVal, oldVal) {
+                    if (newVal !== oldVal)
+                    {
+                        this.slug = slug(this.title, {lower: true})
+                    }
+                }
+            }
+        })
+    </script>
 @endpush
