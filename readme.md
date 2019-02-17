@@ -1,5 +1,7 @@
 # BUDDI
 
+*Buddi currently under heavy development, some features may changes!*
+
 Buddi is a laravel based simple knowledge base
 with support ticket and status page.
 
