@@ -59,13 +59,18 @@
                 </div>
                 <div class="col">
 
-                    <div class="btn-group my-3">
-                        <button type="submit" name="action" value="publish" class="btn btn-primary">{{ __($article->id ? 'Update' : 'Publish') }}</button>
-                        <button type="submit" name="action" value="draft" class="btn btn-light">{{ __('Save as draft') }}</button>
-                        @if($article->published)
-                            <a href="{{ route('articles::show', [$article, $article->slug]) }}" class="btn btn-light" target="_blank">{{ __('View') }}</a>
-                        @endif
+                    <div class="dropdown">
+                        <button type="submit" name="action" value="publish" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{ __($article->id ? 'Update' : 'Publish') }}</button>
+
+                        <div class="dropdown-menu">
+                            <button type="submit" name="action" value="draft" class="btn btn-light dropdown-item">{{ __('Save as draft') }}</button>
+                            @if($article->published)
+                                <a href="{{ route('articles::show', [$article, $article->slug]) }}" class="btn btn-light dropdown-item" target="_blank">{{ __('View') }}</a>
+                            @endif
+                        </div>
+
                     </div>
+
                     <hr>
 
                     <div class="form-group">
@@ -117,13 +122,22 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@0.6.0/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slug@0.9.3/slug.min.js"></script>
 
+    <div class="d-none" id="content-value">
+        {{ $article->content_md }}
+    </div>
+
     <script>
 
         var app = new Vue({
             el: "#form-app",
+
+            mounted() {
+                this.content = $("#content-value").text().trim();
+            },
+
             data() {
                 return {
-                    content: "{{ $article->content_md }}",
+                    content: "",
                     compiledContent: "",
                     slug: "{{ $article->slug }}",
                     title: "{{ $article->title }}",
