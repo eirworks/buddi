@@ -18,4 +18,19 @@ class Category extends Model
     {
         return $this->hasMany(Article::class);
     }
+
+    public function getPublishedArticlesAttribute()
+    {
+        return $this->articles()->where('published', true)
+            ->limit(5)
+            ->get();
+    }
+
+    public function publishedArticles($limit = 5)
+    {
+        return $this->articles()->where('published', true)
+            ->limit($limit)
+            ->latest()
+            ->get();
+    }
 }
