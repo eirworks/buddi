@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <label for="category_id">{{ __('Select category') }}</label>
                         <select name="category_id" id="category_id" class="form-control">
-                            <option value="" {{ 0 == $article->category_id ? 'selected' : '' }}>{{ __('No category') }}</option>
+                            <option value="0" {{ 0 == $article->category_id ? 'selected' : '' }}>{{ __('No category') }}</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ $category->id == $article->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
