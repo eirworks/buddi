@@ -59,16 +59,20 @@
                 </div>
                 <div class="col">
 
-                    <div class="dropdown">
-                        <button type="submit" name="action" value="publish" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{ __($article->id ? 'Update' : 'Publish') }}</button>
+                    <div class="btn-group">
 
-                        <div class="dropdown-menu">
-                            <button type="submit" name="action" value="draft" class="btn btn-light dropdown-item">{{ __('Save as draft') }}</button>
-                            @if($article->published)
-                                <a href="{{ route('articles::show', [$article, $article->slug]) }}" class="btn btn-light dropdown-item" target="_blank">{{ __('View') }}</a>
-                            @endif
+                        <div class="dropdown">
+                            <button type="submit" name="action" value="publish" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{ __($article->id ? 'Update' : 'Publish') }}</button>
+
+                            <div class="dropdown-menu">
+                                <button type="submit" name="action" value="publish" class="btn btn-primary dropdown-item">{{ __($article->id ? 'Update' : 'Publish') }}</button>
+                                <button type="submit" name="action" value="draft" class="btn btn-light dropdown-item">{{ __('Save as draft') }}</button>
+                            </div>
+
                         </div>
-
+                        @if($article->published)
+                            <a href="{{ route('articles::show', [$article, $article->slug]) }}" class="btn btn-light" target="_blank">{{ __('View') }}</a>
+                        @endif
                     </div>
 
                     <hr>
