@@ -52,6 +52,7 @@ class SetupAdmin extends Command
             'name' => $adminName,
             'email' => $adminEmail,
             'password' => \Hash::make($adminPassword),
+            'admin' => true,
             'activated' => true,
         ]);
 
